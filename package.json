@@ -1,0 +1,27 @@
+{
+  "name": "topic-tile",
+  "version": "0.0.4",
+  "description": "Implementation of a string segmentaiton algorithm based on topic model word-weights.",
+  "main": "index.js",
+  "scripts": {
+    "deps": "dependency-check . && dependency-check . --extra --no-dev",
+    "test": "npm run deps && NODE_ENV=test node test",
+    "test:cov": "npm run deps && NODE_ENV=test istanbul cover test.js"
+  },
+  "repository": "JDvorak/topic-tile",
+  "keywords": [
+    "Tiler",
+    "algorithm",
+    "topic-tiling",
+    "lda",
+    "mallet"
+  ],
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "dependency-check": "^2.8.0",
+    "istanbul": "^0.4.5",
+    "standard": "^10.0.1",
+    "tape": "^4.6.3"
+  }
+}
