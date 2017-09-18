@@ -8,18 +8,18 @@ const path = require('path')
 
 */
 module.exports = function readSparseWordWeights (filePath) {
+  //TODO: Swap this out for a stream, there isn't any need to pull it all into memory.
   return fs.readFileSync(path.resolve(filePath), 'utf8').split('\n').reduce(function (obj, str, i, arr) {
     var data = str.split(' ')
-    var total = arr.length
-    var finalScore = data.map(function (ea, i) {
+    var topics = data.map(function (ea, i) {
       if (i > 2) {
-        var newScore = ea.split(':')
-        return { value: newScore[1] / total,
-          category: newScore[0] }
+        var values = ea.split(':')
+        return { value: values[1],
+          category: values[0] }
       }
     }).filter(function (ea) { return ea })
     var word = data[1]
-    obj[word] = finalScore
+    obj[word] = topics
     return obj
   }, {})
 }
